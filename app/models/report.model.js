@@ -1,16 +1,13 @@
 module.exports = mongoose => {
-  const Report = mongoose.model(
-    'report',
-    mongoose.Schema(
-      {
-        nickname: String,
-        avatar: String,
-        similarityPercentage: Number
-      },
-      {
-        timestamps: true
-      }
-    )
+  const schema = mongoose.Schema(
+    {
+      nickname: String,
+      avatar: String,
+      similarityPercentage: Number
+    },
+    {
+      timestamps: true
+    }
   );
 
   schema.method('toJSON', function() {
@@ -19,7 +16,7 @@ module.exports = mongoose => {
     return object;
   });
 
-  const Report = mongoose.model("report", schema);
+  const Report = mongoose.model('report', schema);
 
   return Report;
 };
