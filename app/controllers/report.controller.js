@@ -1,5 +1,5 @@
 const db = require("../models");
-const Tutorial = db.tutorials;
+const Report = db.reports;
 
 exports.create = (req, res) => {
   if (!req.body.nickname) {
@@ -7,7 +7,7 @@ exports.create = (req, res) => {
     return;
   }
 
-  const report = new Tutorial({
+  const report = new Report({
     nickname: req.body.nickname,
     avatar: req.body.avatar,
     similarityPercentage: req.body.similarityPercentage
@@ -27,14 +27,14 @@ exports.create = (req, res) => {
 };
 
 exports.findAll = (_, res) => {
-  Tutorial.find()
+  Report.find({})
     .then(data => {
       res.send(data);
     })
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while retrieving tutorials."
+          err.message || "Some error occurred while retrieving Reports."
       });
     });
 };
@@ -45,13 +45,13 @@ exports.findOne = (req, res) => {
   Report.findById(id)
     .then(data => {
       if (!data)
-        res.status(404).send({ message: "Not found Tutorial with id " + id });
+        res.status(404).send({ message: "Not found Report with id " + id });
       else res.send(data);
     })
     .catch(err => {
       res
         .status(500)
-        .send({ message: "Error retrieving Tutorial with id=" + id });
+        .send({ message: "Error retrieving Report with id=" + id });
     });
 };
 
@@ -68,7 +68,7 @@ exports.update = (req, res) => {
     .then(data => {
       if (!data) {
         res.status(404).send({
-          message: `Cannot update Report with id=${id}. Maybe Tutorial was not found!`
+          message: `Cannot update Report with id=${id}. Maybe Report was not found!`
         });
       } else res.send({ message: "Report was updated successfully." });
     })
@@ -86,17 +86,17 @@ exports.delete = (req, res) => {
     .then(data => {
       if (!data) {
         res.status(404).send({
-          message: `Cannot delete Report with id=${id}. Maybe Tutorial was not found!`
+          message: `Cannot delete Report with id=${id}. Maybe Report was not found!`
         });
       } else {
         res.send({
-          message: "Tutorial was deleted successfully!"
+          message: "Report was deleted successfully!"
         });
       }
     })
     .catch(err => {
       res.status(500).send({
-        message: "Could not delete Tutorial with id=" + id
+        message: "Could not delete Report with id=" + id
       });
     });
 };

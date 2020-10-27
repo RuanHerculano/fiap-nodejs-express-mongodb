@@ -1,17 +1,17 @@
 module.exports = app => {
-  const tutorials = require('../controllers/report.controller.js');
+  const reports = require('../controllers/report.controller.js');
 
-  var router = require('express').Router();
+  const router = require('express').Router();
 
-  router.post('/', tutorials.create);
+  router.post('/', reports.create);
 
-  router.get('/', tutorials.findAll);
+  router.get('/', reports.findAll);
 
-  router.get('/:id  ', tutorials.findOne);
+  router.get('/:id  ', reports.findOne);
 
-  router.put('/:id', tutorials.update);
+  router.put('/:id', reports.update);
 
-  router.delete('/:id', tutorials.delete);
+  router.delete('/:id', reports.delete);
 
-  app.use('/api/report', router);
+  app.use('/api/reports', router);
 };
