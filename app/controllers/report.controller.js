@@ -10,7 +10,7 @@ exports.create = (req, res) => {
   const report = new Report({
     nickname: req.body.nickname,
     avatar: req.body.avatar,
-    similarityPercentage: req.body.similarityPercentage
+    similarityLevel: req.body.similarityLevel
   });
 
   report

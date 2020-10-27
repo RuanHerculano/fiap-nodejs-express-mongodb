@@ -3,7 +3,7 @@ module.exports = mongoose => {
     {
       nickname: String,
       avatar: String,
-      similarityPercentage: Number
+      similarityLevel: Number
     },
     {
       timestamps: true
